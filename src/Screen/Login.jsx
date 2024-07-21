@@ -29,8 +29,10 @@ function Login() {
       alert("Enter valid credentials");
     }
     if (json.success) {
+      localStorage.setItem("authtoken", json.authtoken);
+      console.log(localStorage.getItem("authtoken"));
       navigate("/");
-    } 
+    }
   };
 
   const onChange = (event) => {
