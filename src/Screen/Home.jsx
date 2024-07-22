@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar.jsx";
 import Footer from "../Components/Footer.jsx";
 import Card from "../Components/Card.jsx";
-import Cousrl from "../Components/Cousrl.jsx";
+// import Cousrl from "../Components/Cousrl.jsx";
+import { CartProvider } from "../Components/ContextReducer.jsx";
 export default function Home() {
     const [search, setseaarch] = useState("");
   const [foodCat, setfoodCat] = useState([]);
@@ -36,6 +37,7 @@ export default function Home() {
     loadData();
   }, []);
   return (
+    <CartProvider>
     <div>
       <div>
         <Navbar />
@@ -158,5 +160,6 @@ export default function Home() {
         <Footer></Footer>
       </div>
     </div>
+    </CartProvider>
   );
 }
