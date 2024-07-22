@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
-import { Modal, Button, Table } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import { Nav, Modal, Button, Table } from "react-bootstrap";
 import AddCompanyForm from "../Components/AddCompanyForm";
 import UpdateCompanyForm from "../Components/UpdateCompanyForm";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -35,12 +35,17 @@ function AdminDashboard() {
 
     fetchCompanies();
   }, []);
-
+  const auth = localStorage.getItem("authtoken");
   const handleRowClick = (company) => {
     setSelectedCompany(company);
     setUpdateShowModal(true);
   };
+  const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem("authtoken");
+    navigate("/login");
+  };
   return (
     <div>
       <Navbar expand="lg" bg="success">
@@ -48,63 +53,99 @@ function AdminDashboard() {
           HackFood
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarNav" />
-      </Navbar>
-      <div
-        className="d-flex justify-content-end mt-2"
-        style={{ zIndex: 9, position: "relative" }}
-      >
-        <Button
-          variant="success"
-          className="text-white mx-1"
-          onClick={handleShow}
+
+        <Navbar.Collapse
+          id="navbarNav"
+          className="d-flex  justify-content-end "
         >
-          Add Company
-        </Button>
-      </div>
-      <Modal show={showModal} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Add Restaurant Company</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <AddCompanyForm />
-        </Modal.Body>
-      </Modal>
+          <div>
+            {!localStorage.getItem("authtoken") ? (
+              <div className="d-flex">
+                <Link className="btn bg-white text-success mx-1" to="/login">
+                  Login
+                </Link>
 
-      <Modal show={updateShowModal} onHide={handleClose} size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>Update Restaurant Company</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {selectedCompany && <UpdateCompanyForm company={selectedCompany} />}
-        </Modal.Body>
-      </Modal>
+                <Link
+                  className="btn bg-white text-success mx-1"
+                  to="/createuser"
+                >
+                  SignUp
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <div
+                  className="btn btn bg-white text-danger mx-2"
+                  onClick={handleLogout}
+                >
+                  LogOut
+                </div>
+              </div>
+            )}
+          </div>
+        </Navbar.Collapse>
+      </Navbar>
+      {auth && (
+        <>
+          <div
+            className="d-flex justify-content-end mt-2"
+            style={{ zIndex: 9, position: "relative" }}
+          >
+            <Button
+              variant="success"
+              className="text-white mx-1"
+              onClick={handleShow}
+            >
+              Add Company
+            </Button>
+          </div>
+          <Modal show={showModal} onHide={handleClose} size="lg">
+            <Modal.Header closeButton>
+              <Modal.Title>Add Restaurant Company</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <AddCompanyForm />
+            </Modal.Body>
+          </Modal>
 
-      <div className="table-container">
-        <Table striped bordered hover className="custom-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Phone</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {companies.map((company) => (
-              <tr
-                key={company._id}
-                onClick={() => handleRowClick(company)}
-                className="table-row"
-              >
-                <td>{company.name}</td>
-                <td>{company.address}</td>
-                <td>{company.phone}</td>
-                <td>{company.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+          <Modal show={updateShowModal} onHide={handleClose} size="lg">
+            <Modal.Header closeButton>
+              <Modal.Title>Update Restaurant Company</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {selectedCompany && (
+                <UpdateCompanyForm company={selectedCompany} />
+              )}
+            </Modal.Body>
+          </Modal>
+          <div className="table-container">
+            <Table striped bordered hover className="custom-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>Phone</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                {companies.map((company) => (
+                  <tr
+                    key={company._id}
+                    onClick={() => handleRowClick(company)}
+                    className="table-row"
+                  >
+                    <td>{company.name}</td>
+                    <td>{company.address}</td>
+                    <td>{company.phone}</td>
+                    <td>{company.email}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </>
+      )}
     </div>
   );
 }
