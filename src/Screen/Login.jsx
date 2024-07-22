@@ -32,7 +32,11 @@ function Login() {
       localStorage.setItem("userEmail", credentials.email);
       localStorage.setItem("authtoken", json.authtoken);
       console.log(localStorage.getItem("authtoken"));
-      navigate("/");
+      if (json.role === "customer") {
+        navigate("/");
+      } else if (json.role === "admin") {
+        navigate("/admin");
+      }
     }
   };
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { useCart, useDispatchCart } from "../Components/ContextReducer.jsx";
-
+import { useCart, useDispatchCart } from "../Components/ContextReducer";
+import Swal from "sweetalert2";
 
 function Cart() {
   let data = useCart();
@@ -16,7 +16,8 @@ function Cart() {
 
   const HandleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    let response = await fetch("http://localhost:4000/api/orderData", {
+
+    let response = await fetch(`http://localhost:4000/api/orderData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,9 +28,15 @@ function Cart() {
         order_date: new Date().toDateString(),
       }),
     });
-    console.log("order response",response);
+
+    // console.log("order response", response);
     if (response.status === 200) {
       dispatch({ type: "DROP" });
+      Swal.fire({
+        title: "Order Placed Sucessfully!",
+
+        icon: "success",
+      });
     }
   };
   let totalprice = data.reduce((total, food) => total + food.price, 0);
@@ -82,7 +89,12 @@ function Cart() {
       </table>
       <div className="fs-4"> Total Prize:{totalprice}/-</div>
       <div>
-        <button className="btn bg-success mt-5 text-white" onClick={HandleCheckOut}>Check out</button>
+        <button
+          className="btn bg-success mt-5 text-white"
+          onClick={HandleCheckOut}
+        >
+          Check out
+        </button>
       </div>
     </div>
   );

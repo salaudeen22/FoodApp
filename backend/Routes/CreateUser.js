@@ -81,9 +81,10 @@ router.post(
       const data = { user: { id: userdata.id } };
 
       const authtoken=jwt.sign(data,jwtsecret);
+      const role=userdata.role;
 
 
-      res.json({ success: true,authtoken });
+      res.json({ success: true,authtoken, role});
     } catch (error) {
       console.log(error);
       res.json({ success: false });
