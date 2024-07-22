@@ -31,6 +31,7 @@ function Card(props) {
   }, [prizref.current?.value]);
 
   let finalprize = quty * parseInt(Options[size], 10);
+  
   return (
     <div className="card mt-3" style={{ maxWidth: "18rem" }}>
       <img className="card-img-top" src={props.imgSrc} height={"200px"} />

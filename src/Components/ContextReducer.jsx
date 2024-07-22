@@ -17,6 +17,12 @@ const reducer = (state, action) => {
           img: action.img,
         },
       ];
+    case "DROP":
+      let emptyarr = [];
+      return emptyarr;
+
+      return [];
+
     default:
       return state;
   }
@@ -34,4 +40,3 @@ export const CartProvider = ({ children }) => {
 
 export const useCart = () => useContext(CartContext);
 export const useDispatchCart = () => useContext(CartDispatchContext);
-
