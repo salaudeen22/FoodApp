@@ -1,70 +1,121 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# FoodApp
 
-## Available Scripts
+Welcome to FoodApp! This web application allows users to browse, order, and manage food items from various restaurants. Designed with a modern and intuitive interface, FoodApp offers a seamless experience for both users and restaurant managers.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+### User Features
+- **Browse Food Items**: View a variety of food items from different categories.
+- **Order Food**: Easily place orders for food items.
+- **Responsive Design**: The app is fully responsive and works well on both desktop and mobile devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Admin Features
+- **Manage Categories**: Add and manage food categories.
+- **Manage Food Items**: Add, update, and remove food items.
+- **User Management**: View and manage user accounts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+Here are some screenshots of the FoodApp in action:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **SignUp page**
+   ![SignUp page](https://drive.google.com/uc?id=1-d1rtKXdIGr9psKV6J7XqTc3r1QRrF1J)
 
-### `npm run build`
+2. **Login Page**
+   ![Login Page](https://ibb.co/X2c4Y8z)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **Home page**
+   ![Food Items Table](https://drive.google.com/uc?id=1cbEf_oMguuOtct6Tp2rFQFTZdNN4N50r)
+   
+4. **Admin Dashboard**
+   ![Admin Dashboard](https://drive.google.com/uc?id=1eyR2rOox72AGGFYzOnFHstSh_rOLVo8c)
+   
+5. **Vendor Dashboard**
+   ![Admin Dashboard](https://drive.google.com/uc?id=1W3HLo5EO6Fuka9gkeRQRgX9NzysZqCpm)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+6. **Add Category Item**
+   ![Add Category Item](https://drive.google.com/uc?id=1V1fbkkrK_j9yXXY3AUD82KqoUS-ulNXr)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+7. **Add Company Form**
+   ![Add Company Form](https://drive.google.com/uc?id=1abtMMjoSWdGVAedgJSltw5cs20IV_U9k)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+8. **Check out window**
+   ![Check out window](https://drive.google.com/uc?id=1ad_yxoW3aBgN8ec6E_1DbRGmSDRAVw18)
 
-## Learn More
+9. **Category Management**
+   ![Category Management](https://drive.google.com/uc?id=1cYbkZvOgM_2FFtvlFI6m-ycItRtSqKe_)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Installation
 
-### Analyzing the Bundle Size
+To get started with FoodApp, follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **Clone the Repository**
 
-### Making a Progressive Web App
+    ```bash
+    git clone https://github.com/yourusername/foodapp.git
+    cd foodapp
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. **Install Dependencies**
 
-### Advanced Configuration
+    - For the backend (Node.js/Express):
+      
+      ```bash
+      cd backend
+      npm install
+      nodemon index.js
+      ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    - For the frontend (React):
+      
+      ```bash
+      cd frontend
+      npm install
+      npm run
+      ```
 
-### Deployment
+3. **Set Up Environment Variables**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    Create a `.env` file in both `server` and `client` directories with the necessary environment variables. For example:
 
-### `npm run build` fails to minify
+    **Server (.env)**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    ```plaintext
+    MONGO_URI=mongodb://localhost:27017/foodapp
+    JWT_SECRET=your_jwt_secret
+    ```
+
+    **Client (.env)**
+
+    ```plaintext
+    REACT_APP_API_URL=http://localhost:4000/api
+    ```
+
+4. **Run the Application**
+
+    - Start the backend server:
+
+      ```bash
+      cd backend
+      npm i
+      nodemon index.js
+      ```
+
+    - Start the frontend application:
+
+      ```bash
+      cd frontend
+  
+      npm start
+      ```
+
+    Open your browser and navigate to `http://localhost:3000` to see the application in action.
+
