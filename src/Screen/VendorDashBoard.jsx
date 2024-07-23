@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Modal, Button, Table } from "react-bootstrap";
+import {Nav, Navbar, Modal, Button, Table } from "react-bootstrap";
 import AddFoodItem from "../Components/AddFoodItem";
 import AddCategory from "../Components/AddCategory";
 
@@ -49,41 +49,38 @@ function VendorDashBoard() {
  
   return (
     <div>
-      <Navbar expand="lg" bg="success" className="p-3">
-        <Navbar.Brand as={Link} to="#" className="fs-4 fst-italic text-white">
-          HackFood
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarNav" />
+         <Navbar expand="lg" bg="success" className="d-flex justify-content-lg-between">
+      <Navbar.Brand as={Link} to="#" className="fs-4 fst-italic text-white">
+        HackFood
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="navbarNav" />
+      <Navbar.Collapse id="navbarNav">
+        <Nav className="ml-auto">
+          {!auth ? (
+            <div className="d-flex flex-xl-row flex-md-column">
+              <Link className="btn bg-white text-success mx-1 mt-1" to="/login">
+                Login
+              </Link>
+              <Link className="btn bg-white text-success mx-1 mt-1" to="/createuser">
+                SignUp
+              </Link>
+            </div>
+          ) : (
+            <Button className="bg-white text-danger mx-2 mt-1" onClick={handleLogout}>
+              LogOut
+            </Button>
+          )}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
 
-        <Navbar.Collapse id="navbarNav" className="d-flex justify-content-end">
-          <div>
-            {!localStorage.getItem("authtoken") ? (
-              <div className="d-flex">
-                <Link className="btn bg-white text-success mx-1" to="/login">
-                  Login
-                </Link>
-                <Link className="btn bg-white text-success mx-1" to="/createuser">
-                  SignUp
-                </Link>
-              </div>
-            ) : (
-              <div>
-                <div className="btn bg-white text-danger mx-2" onClick={handleLogout}>
-                  LogOut
-                </div>
-              </div>
-            )}
-          </div>
-        </Navbar.Collapse>
-      </Navbar>
-
-      <div className="container mt-5 d-flex justify-content-between">
+      <div className="container mt-5 d-flex align-items-center justify-content-between">
         <h2 className="greeting text-success">Welcome, {companyName}!</h2>
         <div className="">
         <Button variant="success" className="mt-3" onClick={handleShow}>
           Add Category
         </Button>
-        <Button variant="success" className="mx-2 mt-3" onClick={handleShow1}>
+        <Button variant="success" className="mx-1 mt-3" onClick={handleShow1}>
           Add Food Item
         </Button>
         </div>

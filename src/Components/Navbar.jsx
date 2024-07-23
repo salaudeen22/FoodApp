@@ -23,7 +23,7 @@ function NavBar() {
     <div>
       <Navbar expand="lg" bg="success">
         <Navbar.Brand as={Link} to="#" className="fs-1 fst-italic">
-          {/* <img src={logo} alt="VP Logo" height="50px" width="50px" /> */}
+        HackFood
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbarNav" />
