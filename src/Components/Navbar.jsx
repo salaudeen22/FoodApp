@@ -22,7 +22,7 @@ function NavBar() {
   return (
     <div>
       <Navbar expand="lg" bg="success">
-        <Navbar.Brand as={Link} to="#" className="fs-1 fst-italic">
+        <Navbar.Brand as={Link} to="#" className="fs-5 fst-italic">
         HackFood
         </Navbar.Brand>
 

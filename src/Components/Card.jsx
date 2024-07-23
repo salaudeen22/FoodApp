@@ -3,6 +3,7 @@ import { useCart, useDispatchCart } from "./ContextReducer";
 import Swal from 'sweetalert2'
 
 export default function Card(props) {
+  console.log(props);
   let Options = props.options[0] || {};
   let priceOption = Object.keys(Options);
   let prizref = useRef();
@@ -79,7 +80,7 @@ export default function Card(props) {
       />
       <div className="card-body">
         <h5 className="card-title">{FoodItem.name}</h5>
-        <p className="card-text">lorem</p>
+        <p className="card-text small" style={{ fontSize: '12px' }}>{FoodItem.description}</p>
         <div className="container w-100">
           <select
             className="m-2 h-100 bg-success rounded"
