@@ -1,17 +1,5 @@
 const mongoose = require("mongoose");
-
-const FoodItemSchema = new mongoose.Schema({
-  CategoryName: { type: String, required: true },
-  name: { type: String, required: true },
-  img: { type: String, required: true },
-  options: [
-    {
-      half: { type: Number },
-      full: { type: Number },
-    },
-  ],
-  description: { type: String, required: true },
-});
+const FoodItemSchema = require("./FoodItem").schema;
 
 const CompanySchema = new mongoose.Schema({
   name: { type: String, required: true },

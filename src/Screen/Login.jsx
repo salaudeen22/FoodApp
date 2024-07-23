@@ -37,6 +37,9 @@ function Login() {
         navigate("/");
       } else if (json.role === "admin") {
         navigate("/admin");
+      } else if (json.role === "vendor") {
+        localStorage.setItem("name", json.name);
+        navigate("/Vendor");
       }
     }
   };
@@ -46,55 +49,55 @@ function Login() {
   };
   return (
     <div className="loginBody">
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
-    <div className="card shadow-sm">
-      <div className="card-body">
-        <h2 className="card-title text-center">Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              name="email"
-              value={credentials.email}
-              onChange={onChange}
-              required
-            />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
-            </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-              required
-            />
-          </div>
+      <div className="container d-flex justify-content-center align-items-center min-vh-100">
+        <div className="card shadow-sm">
+          <div className="card-body">
+            <h2 className="card-title text-center">Login</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  name="email"
+                  value={credentials.email}
+                  onChange={onChange}
+                  required
+                />
+                <div id="emailHelp" className="form-text">
+                  We'll never share your email with anyone else.
+                </div>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  className="form-control"
+                  id="exampleInputPassword1"
+                  name="password"
+                  value={credentials.password}
+                  onChange={onChange}
+                  required
+                />
+              </div>
 
-          <button type="submit" className="btn btn-success">
-            Submit
-          </button>
-          <Link to="/createuser" className="m-3 btn btn-danger">
-            I am a new user
-          </Link>
-        </form>
+              <button type="submit" className="btn btn-success">
+                Submit
+              </button>
+              <Link to="/createuser" className="m-3 btn btn-danger">
+                I am a new user
+              </Link>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
   );
 }
 

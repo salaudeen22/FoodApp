@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './Screen/Signup.jsx';
 import Myorder from './Screen/Myorder.jsx';
 import AdminDashboard from './Screen/AdminDashboard.jsx';
+import VendorDashBoard from './Screen/VendorDashBoard.jsx';
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/createuser" element={<Signup />} />
         <Route path="/myOrder" element={<Myorder />} />
         <Route path="/Admin" element={<AdminDashboard />} />
+        <Route path="/Vendor" element={<VendorDashBoard />} />
       </Routes>
     </Router>
   

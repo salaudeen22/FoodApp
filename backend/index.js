@@ -22,6 +22,7 @@ app.use("/api", require("./Routes/CreateUser.js"));
 app.use("/api", require("./Routes/DisplayData.js"));
 app.use("/api", require("./Routes/OrderData.js"));
 app.use("/api", require("./Routes/CreateCompany.js"));
+app.use("/api", require("./Routes/Vendor.js"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
