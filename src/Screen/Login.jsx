@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -44,8 +45,11 @@ function Login() {
     setCredentials({ ...credentials, [event.target.name]: event.target.value });
   };
   return (
-    <>
-      <div className="container">
+    <div className="loginBody">
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="card shadow-sm">
+      <div className="card-body">
+        <h2 className="card-title text-center">Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
@@ -59,6 +63,7 @@ function Login() {
               name="email"
               value={credentials.email}
               onChange={onChange}
+              required
             />
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
@@ -75,6 +80,7 @@ function Login() {
               name="password"
               value={credentials.password}
               onChange={onChange}
+              required
             />
           </div>
 
@@ -82,11 +88,13 @@ function Login() {
             Submit
           </button>
           <Link to="/createuser" className="m-3 btn btn-danger">
-            I am new user
+            I am a new user
           </Link>
         </form>
       </div>
-    </>
+    </div>
+  </div>
+  </div>
   );
 }
 

@@ -1,0 +1,41 @@
+.signUpBOdy {
+    background: url('https://restaurant.eatapp.co/hs-fs/hubfs/Entryway-Restaurant-Doors-Branded-Group-jpg-1.webp?width=670&height=440&name=Entryway-Restaurant-Doors-Branded-Group-jpg-1.webp') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+  }
+  
+  .signUpBOdy  .container {
+    max-width: 500px; 
+  }
+  
+  .signUpBOdy  .card {
+    background: #ffffff; 
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .signUpBOdy  .card-title {
+    color: #333; 
+    margin-bottom: 20px; 
+  }
+  
+  .signUpBOdy  .btn-success {
+    background-color: #28a745; 
+    border-color: #28a745;
+  }
+  
+  .signUpBOdy  .btn-danger {
+    background-color: #dc3545; 
+    border-color: #dc3545;
+  }
+  
+  .signUpBOdy   .btn {
+    font-size: 16px; 
+    padding: 10px;
+  }
+  
+  .signUpBOdy  input {
+    border-radius: 4px; 
+  }
+  

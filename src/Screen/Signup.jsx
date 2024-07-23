@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import "./Signup.css";
 export default function Signup() {
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
-    location: "", 
-    phone: "",    
-    role: "customer" 
+    location: "",
+    phone: "",
+    role: "customer",
   });
 
   const handleSubmit = async (e) => {
@@ -22,10 +22,10 @@ export default function Signup() {
         name: credentials.name,
         email: credentials.email,
         password: credentials.password,
-        location: credentials.location, 
-        
+        location: credentials.location,
+
         role: credentials.role,
-        phone: credentials.phone 
+        phone: credentials.phone,
       }),
     });
 
@@ -44,82 +44,92 @@ export default function Signup() {
   };
 
   return (
-    <>
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">
-              Name:
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="name"
-              value={credentials.name}
-              onChange={onChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address:
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              value={credentials.email}
-              onChange={onChange}
-            />
-            <div id="emailHelp" className="form-text">
-              We'll never share your email with anyone else.
+    <div className="signUpBOdy">
+    <div className="container  d-flex justify-content-center align-items-center min-vh-100">
+      <div className="card shadow-sm">
+        <div className="card-body">
+          <h2 className="card-title text-center">Sign Up</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">
+                Name:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="name"
+                value={credentials.name}
+                onChange={onChange}
+                required
+              />
             </div>
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label">
-              Password:
-            </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={credentials.password}
-              onChange={onChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="location" className="form-label">
-              Location:
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="location"
-              value={credentials.location}
-              onChange={onChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="phone" className="form-label">
-              Phone:
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              name="phone"
-              value={credentials.phone}
-              onChange={onChange}
-            />
-          </div>
-          <button type="submit" className="btn btn-success">
-            Submit
-          </button>
-          <Link to="/login" className="m-3 btn btn-danger">
-            Already a user
-          </Link>
-        </form>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email address:
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={credentials.email}
+                onChange={onChange}
+                required
+              />
+              <div id="emailHelp" className="form-text">
+                We'll never share your email with anyone else.
+              </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password:
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                value={credentials.password}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="location" className="form-label">
+                Location:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="location"
+                value={credentials.location}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="phone" className="form-label">
+                Phone:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="phone"
+                value={credentials.phone}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-success">
+              Submit
+            </button>
+            <Link to="/login" className="m-3 btn btn-danger">
+              Already a user
+            </Link>
+          </form>
+        </div>
       </div>
-    </>
+    </div>
+    </div>
   );
 }

@@ -1,0 +1,41 @@
+.loginBody {
+    background: url('https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg') no-repeat center center fixed; /* Add background image */
+    background-size: cover; 
+    font-family: Arial, sans-serif; 
+  }
+  
+  .loginBody  .container {
+    max-width: 400px; 
+  }
+  
+.loginBody  .card {
+    background: #ffffff; 
+    border-radius: 8px;
+    padding: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .loginBody .card-title {
+    color: #333; 
+    margin-bottom: 20px;
+  }
+  
+ .loginBody .btn-success {
+    background-color: #28a745; 
+    border-color: #28a745;
+  }
+  
+ .loginBody .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+ .loginBody .btn {
+    font-size: 16px; 
+    padding: 10px;
+  }
+  
+ .loginBody input {
+    border-radius: 4px; /* Rounded corners for input fields */
+  }
+  
