@@ -55,5 +55,26 @@ router.post("/addFoodItem", async (req, res) => {
   }
 });
 
+router.put("/updateFoodItem/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, img, options, description, category } = req.body;
+
+  try {
+    const updatedFoodItem = await FoodItem.findByIdAndUpdate(
+      id,
+      { name, img, options, description, category },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedFoodItem) {
+      return res.status(404).json({ error: "Food item not found" });
+    }
+
+    res.status(200).json({ message: "Food item updated successfully!", foodItem: updatedFoodItem });
+  } catch (error) {
+    console.error("Error updating food item:", error);
+    res.status(500).json({ error: "Failed to update food item" });
+  }
+});
 
 module.exports = router;

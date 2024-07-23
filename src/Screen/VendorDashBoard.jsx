@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Modal, Button, Form } from "react-bootstrap";
+import { Navbar, Modal, Button, Table } from "react-bootstrap";
 import AddFoodItem from "../Components/AddFoodItem";
 import AddCategory from "../Components/AddCategory";
+
+import FoodItemsList from "../Components/FoodItemList";
 
 function VendorDashBoard() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
+  const [foodItems, setFoodItems] = useState([]);
   
   
   const [companyName, setCompanyName] = useState("");
@@ -23,8 +26,13 @@ function VendorDashBoard() {
     setCompanyName(company );
     setCompanyEmail(userEmail);
 
+
+    
+
  
   }, []);
+
+
 
   const handleLogout = () => {
     localStorage.removeItem("authtoken");
@@ -80,6 +88,8 @@ function VendorDashBoard() {
         </Button>
         </div>
       </div>
+
+    <FoodItemsList/>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
