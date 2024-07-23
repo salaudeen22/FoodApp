@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Footer from '../Components/Footer';
-import Navbar from '../Components/Navbar';
+import React, { useState, useEffect } from "react";
+import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function MyOrder() {
   const [orderData, setOrderData] = useState([]);
@@ -8,24 +9,24 @@ export default function MyOrder() {
   const fetchMyOrder = async () => {
     try {
       const response = await fetch(`http://localhost:4000/api/myorderdata`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: localStorage.getItem('userEmail'),
+          email: localStorage.getItem("userEmail"),
         }),
       });
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log('Fetched order data:', responseData.order_data.order_data);
+        console.log("Fetched order data:", responseData.order_data.order_data);
         setOrderData(responseData.order_data.order_data || []);
       } else {
-        console.error('Failed to fetch order data');
+        console.error("Failed to fetch order data");
       }
     } catch (error) {
-      console.error('Error during fetch:', error);
+      console.error("Error during fetch:", error);
     }
   };
 
@@ -36,39 +37,34 @@ export default function MyOrder() {
   return (
     <div>
       <Navbar />
-      <div className='container'>
-        <div className='row'>
+      <div className="container mt-4">
+        <h2 className="mb-4">My Orders</h2>
+        <div className="row">
           {orderData.length > 0 ? (
-            orderData.map((order, orderIndex) => {
-              console.log(`Order ${orderIndex}:`, order);
-              return (
-                <div key={orderIndex} className='order-details'>
-                  <h3>Order ID: {order._id}</h3>
-                  {order.order_data.map((nestedOrderData, nestedOrderIndex) => {
-                    console.log(`Order ${orderIndex}, Nested Order ${nestedOrderIndex}:`, nestedOrderData);
-                    return (
-                      <div key={nestedOrderIndex}>
-                        {Array.isArray(nestedOrderData) &&
-                          nestedOrderData.map((item, itemIndex) => {
-                            console.log(`Order ${orderIndex}, Nested Order ${nestedOrderIndex}, Item ${itemIndex}:`, item);
-                            return (
-                              <div key={itemIndex}>
-                                <p>Name: {item.name}</p>
-                                <p>Quantity: {item.qty}</p>
-                              </div>
-                            );
-                          })}
+            orderData.map((order, orderIndex) => (
+              <div key={orderIndex} className="col-md-6 mb-4">
+                <div className="card">
+                  <div className="card-body">
+                    <h5 className="card-title">Order {orderIndex + 1}</h5>
+                    {order.order_data.map((nestedOrderData, nestedOrderIndex) => (
+                      <div key={nestedOrderIndex} className="mb-3">
+                        <h6 className="card-subtitle mb-2 text-muted">{nestedOrderData.name}</h6>
+                        <p className="card-text">Quantity: {nestedOrderData.qty}</p>
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
                 </div>
-              );
-            })
+              </div>
+            ))
           ) : (
-            <p>No orders available</p>
+            <div className="col-12">
+              <div className="alert alert-info" role="alert">
+                No orders available
+              </div>
+            </div>
           )}
         </div>
-        </div>
+      </div>
       <Footer />
     </div>
   );
