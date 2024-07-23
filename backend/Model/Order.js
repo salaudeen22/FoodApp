@@ -8,15 +8,12 @@ const OrderSchema = new Schema({
         required: true,
         unique: true,
     },
-    phone:
-    {
-        type:String,
-        required:true,
-    },
+   
     order_data: {
         type: Array,
         required: true,
-    }
+    },
+  
 });
 
 
